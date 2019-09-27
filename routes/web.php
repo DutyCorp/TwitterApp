@@ -12,5 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	//if (!Auth::guest()){
+		//return view('login');
+	//} else {
+    	return view('welcome');
+	//}
 });
+
+Route::get('/login', function () {
+	return view('login');
+});
+
+Route::post('/doLogin', 'MainController@Login');
+Route::post('/doRegister', 'MainController@Register');
