@@ -10,11 +10,11 @@
 			@csrf
 			<h1>Login</h1>
 
-			<label for="Username">Username</label>
-			<input type="text" id="Username"></input>
+			<label for="LoginUsername">Username</label>
+			<input type="text" id="LoginUsername" name="LoginUsername"></input><br>
 
-			<label for="password">Password</label>
-			<input type="password" id="Password"></input>
+			<label for="LoginPassword">Password</label>
+			<input type="password" id="LoginPassword" name="LoginPassword"></input><br>
 			<button id="btnLogin" type="submit">Login</button>
 		</form><br><br>
 	</div>
@@ -23,14 +23,14 @@
 		<form action="/doRegister" method="post">
 			@csrf
 			<h1>Register</h1>
-			<h2>Username</h2>
-			<input type="text" id="Username"></input>
+			<label for="RegisterUsername">Username</label>
+			<input type="text" id="RegisterUsername" name="RegisterUsername"></input><br>
 
-			<h2>Password</h2>
-			<input type="password" id="Password"></input>
+			<label for="RegisterPassword">Password</label>
+			<input type="password" id="RegisterPassword" name="RegisterPassword"></input><br>
 
-			<h2>Email</h2>
-			<input id="Email" type="email"></input>
+			<label for="RegisterEmail">Email</label>
+			<input id="RegisterEmail" type="email" name="RegisterEmail"></input><br>
 			<button id="btnRegister" type="submit">Register</button>
 		</form>
 	</div>
