@@ -10,18 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-	//if (!Auth::guest()){
-		//return view('login');
-	//} else {
-    	return view('welcome');
-	//}
-});
+use Illuminate\Support\Facades\Redirect;
+//use Auth;
 
 Route::get('/login', function () {
 	return view('login');
-});
+})->name('login');
 
-Route::post('/doLogin', 'MainController@Login');
-Route::post('/doRegister', 'MainController@Register');
+Route::get('/', function () {
+    return view('home');
+})->middleware('auth');
+
+Route::post('/doLogin', 'MainController@postLogin');
+Route::post('/doRegister', 'MainController@postRegister');
+Route::get('/doLogout', 'MainController@getLogout');
