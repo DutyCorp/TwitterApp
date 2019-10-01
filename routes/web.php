@@ -11,7 +11,7 @@
 |
 */
 use Illuminate\Support\Facades\Redirect;
-//use Auth;
+use App\User;
 
 Route::get('/login', function () {
 	if (Auth::check()){
@@ -26,11 +26,13 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/profile', function() {
-	return view('profile');
+	$User = User::where('UserID', Session::get('UserID'))->first();
+	return view('profile', compact('User'));
 })->middleware('auth');
 
 Route::post('/doLogin', 'MainController@postLogin');
 Route::post('/doRegister', 'MainController@postRegister');
 Route::post('/doPostTweet', 'MainController@postTweet');
+Route::post('/doPostUpdateProfile', 'MainController@postUpdateProfile');
 Route::get('/doLogout', 'MainController@getLogout');
 Route::get('/doRefreshTimeline', 'MainController@getRefreshTimeline');

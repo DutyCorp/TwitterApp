@@ -5,11 +5,19 @@
 				<p class="user"><b>{{ $tweet->Name }}</b></p>
 				<span class="tweet">{{ $tweet->TweetText }}</span>
 			</div>
-			<img class="userphoto" src="{{ asset('Face_Blue_128.png') }}"></img>
+			@if ($tweet->ProfilePicture == '')
+			<img class="userphoto" src="{{ asset('img/Face_Blue_128.png') }}"></img>
+			@else
+			<img class="userphoto" src="{{ asset('uploads/'.$tweet->ProfilePicture) }}"></img>
+			@endif
 		</div>
 	@else
 		<div>
-			<img class="otheruserphoto" src="{{ asset('Face_Blue_128.png') }}"></img>
+			@if ($tweet->ProfilePicture == '')
+			<img class="otheruserphoto" src="{{ asset('img/Face_Blue_128.png') }}"></img>
+			@else
+			<img class="otheruserphoto" src="{{ asset('uploads/'.$tweet->ProfilePicture) }}"></img>
+			@endif
 			<div class="othertweets">
 				<p class="user"><b>{{ $tweet->Name }}</b></p>
 				<span class="tweet">{{ $tweet->TweetText }}</span>

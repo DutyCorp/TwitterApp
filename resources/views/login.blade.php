@@ -3,7 +3,7 @@
 <head>
 	<title>Login</title>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>

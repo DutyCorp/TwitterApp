@@ -28,6 +28,11 @@ body {
 	margin: 0 0 5px 0;
 }
 
+#TweetText {
+	width: 52%;
+	margin: 0 0 0 -4%;
+}
+
 .btn {
 	border-radius: 20px;
 	border: 3px solid #7C77B9;
@@ -58,7 +63,7 @@ body {
 	background: #7C77B9;
 	color: #FFFFFF;
 	width: 60%;
-	height: 100px;
+	height: 60px;
 	margin: 10px 0 0 0;
 	line-height: 0;
 	border-radius: 20px;
@@ -72,7 +77,7 @@ body {
 	background: #FFFFFF;
 	color: #7C77B9;
 	width: 60%;
-	height: 100px;
+	height: 60px;
 	margin: 10px 0 0 0;
 	line-height: 0;
 	border-radius: 20px;
@@ -82,7 +87,7 @@ body {
 .userphoto {
 	display: inline-block;
 	vertical-align: top;
-	margin: 30px 0 0 0;
+	margin: 20px 0 0 0;
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -91,7 +96,7 @@ body {
 .otheruserphoto {
 	display: inline-block;
 	vertical-align: top;
-	margin: 30px 0 0 -7%;
+	margin: 20px 0 0 -7%;
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
@@ -99,6 +104,17 @@ body {
 
 #buttonfooter {
 	margin-top: 50px;
+}
+
+#ProfilePicture {
+	margin: 20px 0 20px 0;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+#btnUpload {
+	margin: 0 0 10px 0;
 }
 
 .spinner {
@@ -130,11 +146,11 @@ body {
 }
 
 @-webkit-keyframes animatebottom {
-	from { bottom: -30px; opacity: 0; }
+	from { bottom: -10px; opacity: 0; }
 	to { bottom: 0px; opacity: 1; }
 }
 
 @keyframes animatebottom {
-	from { bottom: -30px; opacity: 0; }
+	from { bottom: -10px; opacity: 0; }
 	to { bottom: 0px; opacity: 1; }
 }

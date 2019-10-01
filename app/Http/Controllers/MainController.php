@@ -92,8 +92,27 @@ class MainController extends Controller
         return view('tweetlist', compact("tweets"));
 	}
 
-	public function postSaveProfile(Request $request){
+	public function postUpdateProfile(Request $request){
+        $name = $request->UpdateName;
+        $password = $request->UpdatePassword;
+        $email = $request->UpdateEmail;
+        $profilepicture = $request->file('UploadProfilePicture');
 
-		return 0;
+        
+
+        if ($profilepicture == null && $password == ''){
+            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email]);
+        } else if ($profilepicture == null) {
+            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'Password' => \Hash::make($password)]);
+        } else if ($password == ''){
+            $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
+            //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
+            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName()]);
+        } else {
+            $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
+            //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
+            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName(), 'Password' => \Hash::make($password)]);
+        }
+        //return $profilepicture->getClientOriginalName();
 	}
 }
