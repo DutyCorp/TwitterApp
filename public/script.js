@@ -1,5 +1,13 @@
 window.onload = function(){
 	refreshTimeline();
+
+	var tweettext = document.getElementById('TweetText');
+	tweettext.addEventListener('keyup', function(e){
+		if (e.keyCode == 13){
+			e.preventDefault();
+			document.getElementById('btnSendTweet').click();
+		}
+	});
 };
 
 function refreshTimeline(){
@@ -27,6 +35,7 @@ function postTweet(){
 				if (xhr.responseText != ''){
 					alert(xhr.responseText);
 				} else {
+					tweet.value = "";
 					refreshTimeline();			
 				}
 			}
