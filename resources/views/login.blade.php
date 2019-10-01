@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="animate">Twitter</h1>
+		<h1 class="animate">Twitter Application</h1>
 		<div id="divLogin" class="animate"> 
 			<form action="/doLogin" method="post">
 				@csrf

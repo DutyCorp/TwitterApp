@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 class="animate">Twitter</h1>
+		<h1 class="animate">Twitter Application</h1>
 		<div id="profile" class="animate">
 			<h1>Profile</h1>
 			@if ($User->ProfilePicture == '')
