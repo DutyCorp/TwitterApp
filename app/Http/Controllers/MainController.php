@@ -24,7 +24,6 @@ class MainController extends Controller
     	);
     	if (Auth::attempt($userdata)){
     		$User = User::where('Email', $request->input('LoginEmail'))->first();
-    		//return $User->UserID;
     		Session::put('UserID', $User->UserID);
             Session::put('Name', $User->Name);
     		return Redirect::to('/');
@@ -61,7 +60,6 @@ class MainController extends Controller
     	);
     	if (Auth::attempt($userdata)){
     		$User = User::where('Email', $email)->first();
-    		//return $User->UserID;
     		Session::put('UserID', $User->UserID);
             Session::put('Name', $User->Name);
     		return Redirect::to('/');
@@ -98,21 +96,26 @@ class MainController extends Controller
         $email = $request->UpdateEmail;
         $profilepicture = $request->file('UploadProfilePicture');
 
-        
-
-        if ($profilepicture == null && $password == ''){
-            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email]);
-        } else if ($profilepicture == null) {
-            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'Password' => \Hash::make($password)]);
-        } else if ($password == ''){
-            $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
-            //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
-            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName()]);
+        $emailexists = User::where('email', $email)->first();
+        if ($emailexists == null){
+            if ($profilepicture == null && $password == ''){
+                User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email]);
+            } else if ($profilepicture == null) {
+                User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'Password' => \Hash::make($password)]);
+            } else if ($password == ''){
+                $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
+                //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
+                User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName()]);
+            } else {
+                $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
+                //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
+                User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName(), 'Password' => \Hash::make($password)]);
+            }
         } else {
-            $profilepicture->move(public_path('/uploads'), $profilepicture->getClientOriginalName());
-            //Storage::disk('public')->put($profilepicture->getClientOriginalName(), $profilepicture);
-            User::where('UserID', Session::get('UserID'))->update(['Name' => $name, 'Email' => $email, 'ProfilePicture' => $profilepicture->getClientOriginalName(), 'Password' => \Hash::make($password)]);
+            return 'Email already exists';
         }
-        //return $profilepicture->getClientOriginalName();
+
+
+        
 	}
 }

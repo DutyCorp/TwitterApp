@@ -31,7 +31,6 @@ function postTweet(){
 		var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4){
-				//console.log(xhr.responseText);
 				if (xhr.responseText != ''){
 					alert(xhr.responseText);
 				} else {
@@ -46,8 +45,3 @@ function postTweet(){
 	}
 	
 }
-
-function saveProfile() {
-	
-}
-

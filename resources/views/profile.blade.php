@@ -13,7 +13,7 @@
 		<div id="profile" class="animate">
 			<h1>Profile</h1>
 			@if ($User->ProfilePicture == '')
-			<img src="{{ asset('img/Face_Blue_128.png') }}" id="ProfilePicture"><br>
+			<img src="{{ asset('img/default.jpg') }}" id="ProfilePicture"><br>
 			@else
 			<img src="{{ asset('uploads/'.$User->ProfilePicture) }}" id="ProfilePicture"><br>
 			@endif

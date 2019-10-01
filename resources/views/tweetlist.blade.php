@@ -6,7 +6,7 @@
 				<span class="tweet">{{ $tweet->TweetText }}</span>
 			</div>
 			@if ($tweet->ProfilePicture == '')
-			<img class="userphoto" src="{{ asset('img/Face_Blue_128.png') }}"></img>
+			<img class="userphoto" src="{{ asset('img/default.jpg') }}"></img>
 			@else
 			<img class="userphoto" src="{{ asset('uploads/'.$tweet->ProfilePicture) }}"></img>
 			@endif
@@ -14,7 +14,7 @@
 	@else
 		<div>
 			@if ($tweet->ProfilePicture == '')
-			<img class="otheruserphoto" src="{{ asset('img/Face_Blue_128.png') }}"></img>
+			<img class="otheruserphoto" src="{{ asset('img/default.jpg') }}"></img>
 			@else
 			<img class="otheruserphoto" src="{{ asset('uploads/'.$tweet->ProfilePicture) }}"></img>
 			@endif
