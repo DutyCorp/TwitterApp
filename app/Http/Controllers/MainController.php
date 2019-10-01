@@ -77,12 +77,14 @@ class MainController extends Controller
 	}
 
 	public function postTweet(Request $request){
+        if (strlen($request->TweetText) > 280){
+            return 'Tweet should not exceed 280 characters';
+        }
+
 		Tweet::create(array(
 			'UserID' => Session::get('UserID'),
 			'TweetText' => $request->TweetText
 		));
-
-		return 'Success';
 	}
 
 	public function getRefreshTimeline(){
