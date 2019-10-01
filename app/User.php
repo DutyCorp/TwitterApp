@@ -11,7 +11,7 @@ class User extends Model implements Authenticatable
 	use AuthenticableTrait;
 	public $table = "User";
 	protected $primaryKey = 'UserID';
-    protected $fillable = ['Username', 'Password', 'Email', 'ProfilePicture'];
+    protected $fillable = ['Email', 'Name', 'Password', 'ProfilePicture'];
 
     public function getAuthIdentifier() {
 		return $this->getKey();
@@ -20,4 +20,9 @@ class User extends Model implements Authenticatable
     public function getAuthPassword() {
 	    return $this->Password; 
 	}
+
+	public function tweets()
+    {
+        return $this->hasMany('App\Tweet');
+    }
 }
